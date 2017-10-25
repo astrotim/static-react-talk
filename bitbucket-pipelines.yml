@@ -1,0 +1,16 @@
+image: node:6.11.2
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - apt-get update
+            - python --version
+            - apt-get -y install python-dev
+            - apt-get -y install python-pip
+            - pip install awscli
+            - pip --help
+            - aws --version
+            - npm install
+            - npm run build
+            - aws --region ap-southeast-2 s3 sync public/ s3://static-react --cache-control "public, max-age=14400" --delete
