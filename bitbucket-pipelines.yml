@@ -11,6 +11,6 @@ pipelines:
             - pip install awscli
             - pip --help
             - aws --version
-            - npm install
-            - npm run build
+            - yarn install
+            - yarn build
             - aws --region ap-southeast-2 s3 sync public/ s3://static-react --cache-control "public, max-age=14400" --delete
