@@ -3,6 +3,8 @@ pipelines:
   branches:
     master:
       - step:
+          caches:
+            - node
           script:
             - apt-get update
             - python --version
@@ -13,4 +15,4 @@ pipelines:
             - aws --version
             - yarn install
             - yarn build
-            - aws --region ap-southeast-2 s3 sync public/ s3://static-react-talk --cache-control "public, max-age=14400" --delete
+            - aws --region ap-southeast-2 s3 sync build/ s3://static-react-talk --cache-control "public, max-age=14400" --delete
