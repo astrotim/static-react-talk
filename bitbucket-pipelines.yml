@@ -5,6 +5,7 @@ pipelines:
       - step:
           caches:
             - node
+            - pip
           script:
             - apt-get update
             - python --version

@@ -16,11 +16,11 @@ class App extends Component {
           </header>
           <nav>
             <Link to="/">Home</Link>
-            <Link to="/blog">Blog</Link>
+            <Link to="/blog/">Blog</Link>
           </nav>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/blog" component={Blog} />
+            <Route exact path="/blog/" component={Blog} />
           </Switch>
         </div>
       </BrowserRouter>
