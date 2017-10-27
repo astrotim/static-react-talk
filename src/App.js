@@ -5,7 +5,23 @@ import Blog from './Blog';
 import logo from './logo.svg';
 import './App.css';
 
+const { SPACE_ID, ACCESS_TOKEN } = process.env;
+const apiUrl = `https://cdn.contentful.com/spaces/${SPACE_ID}/entries?access_token=${ACCESS_TOKEN}`;
+
 class App extends Component {
+  constructor() {
+    this.state = {
+      data: null
+    };
+  }
+
+  componentDidMount() {
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <BrowserRouter>
