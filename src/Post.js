@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createClient } from 'contentful';
+import { snapshot } from 'react-snapshot';
 
 const { SPACE_ID, ACCESS_TOKEN } = {
   SPACE_ID: 'hdp0fun8agz7',
@@ -12,31 +13,38 @@ class Post extends Component {
     super(props);
 
     this.state = {
-      content: null
+      post: null
     };
   }
 
-  // componentDidMount() {
-  //   const client = createClient({
-  //     space: SPACE_ID,
-  //     accessToken: ACCESS_TOKEN
-  //   });
-  //
-  //   client
-  //     .getEntries()
-  //     .then(response => {
-  //       const posts = response.items;
-  //       this.setState({ posts });
-  //     })
-  //     .catch(console.error);
-  // }
+  componentDidMount() {
+    const client = createClient({
+      space: SPACE_ID,
+      accessToken: ACCESS_TOKEN
+    });
+
+    snapshot(() =>
+      client.getEntry(this.props.match.params.id).then(entry => {
+        return entry;
+      })
+    )
+      .then(post => {
+        this.setState({ post });
+      })
+      .catch(console.error);
+  }
 
   render() {
-    console.log(this.props);
+    const postHeading = this.state.post
+      ? this.state.post.fields.title
+      : 'Loading...';
+
+    const postContent = this.state.post ? this.state.post.fields.content : null;
+
     return (
       <div>
-        <h1>{this.props.match.params.id}</h1>
-        <p>blog post...</p>
+        <h1>{postHeading}</h1>
+        {postContent}
       </div>
     );
   }
