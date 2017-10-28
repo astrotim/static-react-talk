@@ -42,7 +42,7 @@ class Blog extends Component {
         <h1>Blog</h1>
         {this.state.posts &&
           this.state.posts.map(post => {
-            console.log(post);
+            // console.log(post);
             return (
               <Link key={post.sys.id} to={`${post.sys.id}/`}>
                 {post.fields.title}

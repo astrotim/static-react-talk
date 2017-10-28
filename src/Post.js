@@ -17,24 +17,26 @@ class Post extends Component {
     };
   }
 
-  componentDidMount() {
-    const client = createClient({
-      space: SPACE_ID,
-      accessToken: ACCESS_TOKEN
-    });
-
-    snapshot(() =>
-      client.getEntry(this.props.match.params.id).then(entry => {
-        return entry;
-      })
-    )
-      .then(post => {
-        this.setState({ post });
-      })
-      .catch(console.error);
-  }
+  // componentDidMount() {
+  //   const client = createClient({
+  //     space: SPACE_ID,
+  //     accessToken: ACCESS_TOKEN
+  //   });
+  //
+  //   snapshot(() =>
+  //     client.getEntry(this.props.match.params.id).then(entry => {
+  //       return entry;
+  //     })
+  //   )
+  //     .then(post => {
+  //       this.setState({ post });
+  //     })
+  //     .catch(console.error);
+  // }
 
   render() {
+    console.log(this.props);
+    console.log(this.state);
     const postHeading = this.state.post
       ? this.state.post.fields.title
       : 'Loading...';
@@ -43,7 +45,7 @@ class Post extends Component {
 
     return (
       <div>
-        <h1>{postHeading}</h1>
+        <h1>{this.props.match.params.id}</h1>
         {postContent}
       </div>
     );
