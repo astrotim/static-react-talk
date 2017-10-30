@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - "7"
+  - "node"
+cache:
+  - yarn
 install:
   - yarn install
 script:
@@ -11,5 +13,6 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: "static-react-talk"
   skip_cleanup: true
+  local_dir: build
   default_text_charset: "utf-8"
   region: ap-southeast-2
