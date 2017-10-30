@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { createClient } from 'contentful';
-import { snapshot } from 'react-snapshot';
+// import { snapshot } from 'react-snapshot';
 
 const { SPACE_ID, ACCESS_TOKEN } = {
   SPACE_ID: 'hdp0fun8agz7',
@@ -25,11 +25,13 @@ class Blog extends Component {
       accessToken: ACCESS_TOKEN
     });
 
-    snapshot(() =>
-      client.getEntries().then(response => {
+    // snapshot(() =>
+    client
+      .getEntries()
+      .then(response => {
         return response.items;
       })
-    )
+      // )
       .then(posts => {
         this.setState({ posts });
       })
