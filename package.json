@@ -7,8 +7,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
-    "react-snap": "^0.7.3",
-    "react-snapshot": "^2.0.0-0"
+    "react-snap": "^0.7.3"
   },
   "devDependencies": {
     "react-scripts": "1.0.14"
