@@ -10,7 +10,6 @@
     "react-snapshot": "^2.0.0-0"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0",
     "react-scripts": "1.0.14"
   },
   "scripts": {

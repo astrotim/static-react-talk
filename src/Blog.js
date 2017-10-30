@@ -44,7 +44,15 @@ class Blog extends Component {
           this.state.posts.map(post => {
             // console.log(post);
             return (
-              <Link key={post.sys.id} to={`${post.sys.id}/`}>
+              <Link
+                key={post.sys.id}
+                to={{
+                  pathname: `${post.sys.id}/`,
+                  state: {
+                    post: post
+                  }
+                }}
+              >
                 {post.fields.title}
               </Link>
             );
