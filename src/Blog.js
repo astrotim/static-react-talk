@@ -24,10 +24,15 @@ class Blog extends Component {
     });
 
     client
-      .getEntries()
-      .then(response => response.items)
-      .then(posts => {
-        this.setState({ posts });
+      .getEntries({})
+      .then(response => {
+        const posts = response.items;
+
+        console.log(posts);
+
+        this.setState({
+          posts: response.items
+        });
       })
       .catch(console.error);
   }
@@ -37,21 +42,20 @@ class Blog extends Component {
       <div>
         <h1>Blog</h1>
         {this.state.posts &&
-          this.state.posts.map(post => {
-            return (
-              <Link
-                key={post.sys.id}
-                to={{
-                  pathname: `${post.sys.id}/`,
-                  state: {
-                    post: post
-                  }
-                }}
-              >
-                {post.fields.title}
-              </Link>
-            );
-          })}
+          this.state.posts.map(post => (
+            <Link
+              key={post.sys.id}
+              to={{
+                pathname: `${post.sys.id}/`,
+                state: {
+                  post: post
+                }
+              }}
+            >
+              <div>{post.fields.title}</div>
+              <img src={post.fields.image.fields.file.url} />
+            </Link>
+          ))}
       </div>
     );
   }

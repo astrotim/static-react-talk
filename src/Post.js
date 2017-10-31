@@ -16,7 +16,7 @@ class Post extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const client = createClient({
       space: SPACE_ID,
       accessToken: ACCESS_TOKEN
