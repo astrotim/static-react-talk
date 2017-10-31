@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { createClient } from 'contentful';
-// import { snapshot } from 'react-snapshot';
 
 const { SPACE_ID, ACCESS_TOKEN } = {
   SPACE_ID: 'hdp0fun8agz7',
@@ -18,20 +17,15 @@ class Blog extends Component {
     };
   }
 
-  // must be "Will" not "Did"
   componentWillMount() {
     const client = createClient({
       space: SPACE_ID,
       accessToken: ACCESS_TOKEN
     });
 
-    // snapshot(() =>
     client
       .getEntries()
-      .then(response => {
-        return response.items;
-      })
-      // )
+      .then(response => response.items)
       .then(posts => {
         this.setState({ posts });
       })
@@ -44,7 +38,6 @@ class Blog extends Component {
         <h1>Blog</h1>
         {this.state.posts &&
           this.state.posts.map(post => {
-            // console.log(post);
             return (
               <Link
                 key={post.sys.id}
