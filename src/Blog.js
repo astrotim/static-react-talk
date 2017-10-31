@@ -26,10 +26,6 @@ class Blog extends Component {
     client
       .getEntries({})
       .then(response => {
-        const posts = response.items;
-
-        console.log(posts);
-
         this.setState({
           posts: response.items
         });
@@ -53,7 +49,7 @@ class Blog extends Component {
               }}
             >
               <div>{post.fields.title}</div>
-              <img src={post.fields.image.fields.file.url} />
+              <img src={post.fields.image.fields.file.url} alt="" />
             </Link>
           ))}
       </div>
