@@ -33,7 +33,7 @@ class Post extends Component {
   }
 
   render() {
-    let title = 'Loading...';
+    let title;
     let content;
 
     if (this.state.data) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { createClient } from 'contentful';
+import { Cards, Card } from './Card';
 
 const { SPACE_ID, ACCESS_TOKEN } = {
   SPACE_ID: 'hdp0fun8agz7',
@@ -31,15 +32,17 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <Cards>
         {this.state.posts &&
           this.state.posts.map(post => (
             <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
-              <div>{post.fields.title}</div>
-              <img src={post.fields.image.fields.file.url} alt="" />
+              <Card
+                src={post.fields.image.fields.file.url}
+                title={post.fields.title}
+              />
             </Link>
           ))}
-      </div>
+      </Cards>
     );
   }
 }

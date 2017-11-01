@@ -16,10 +16,12 @@ class App extends Component {
             </Link>
             <h1 className="App-title">Static React</h1>
           </header>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/post/:id" component={Post} />
-          </Switch>
+          <main>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/post/:id" component={Post} />
+            </Switch>
+          </main>
         </div>
       </BrowserRouter>
     );
