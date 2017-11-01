@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
-import Masthead from './components/Masthead';
-import Footer from './components/Footer';
 import Home from './Home';
 import Post from './Post';
 import logo from './logo.svg';
@@ -12,7 +10,6 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Masthead primaryHeading="Static React" />
           <header className="App-header">
             <Link to="/">
               <img src={logo} className="App-logo" alt="logo" />
@@ -23,7 +20,6 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/post/:id" component={Post} />
           </Switch>
-          <Footer />
         </div>
       </BrowserRouter>
     );
