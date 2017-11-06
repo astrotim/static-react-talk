@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { createClient } from 'contentful';
-
-const { SPACE_ID, ACCESS_TOKEN } = {
-  SPACE_ID: 'hdp0fun8agz7',
-  ACCESS_TOKEN:
-    '714ce8678f77fcda557192a68152f3807461a9795c870ade7fd285f1b14d9c46'
-};
+import Helmet from 'react-helmet';
 
 class Post extends Component {
   constructor(props) {
@@ -18,8 +13,8 @@ class Post extends Component {
 
   componentWillMount() {
     const client = createClient({
-      space: SPACE_ID,
-      accessToken: ACCESS_TOKEN
+      space: process.env.REACT_APP_SPACE_ID,
+      accessToken: process.env.REACT_APP_ACCESS_TOKEN
     });
 
     client
@@ -43,6 +38,7 @@ class Post extends Component {
 
     return (
       <div>
+        <Helmet title={title} />
         <h1>{title}</h1>
         {content}
       </div>
