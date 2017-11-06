@@ -98,3 +98,60 @@ return (
     {content}
   </div>
 );
+
+// add Card component
+
+import React from 'react';
+import './Card.css';
+
+const Cards = props => <div className="cards">{props.children}</div>;
+
+const Card = props => (
+  <div className="card">
+    <img src={props.src} alt="" />
+    <h2>{props.title}</h2>
+  </div>
+);
+
+export { Card, Cards };
+
+// with css
+
+.cards {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 30rem) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 50rem) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card img {
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.card h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  margin: 0;
+  padding: 1rem;
+}
