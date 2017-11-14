@@ -28,6 +28,7 @@ class Home extends React.Component {
 
     return this.state.posts.map(post => (
       <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
+        <img width="100" src={post.fields.image.fields.file.url} alt="" />
         {post.fields.title}
       </Link>
     ));
