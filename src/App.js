@@ -11,13 +11,14 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
+            <Link to="/">
+              <img src={logo} className="App-logo" alt="logo" />
+            </Link>
             <h1 className="App-title">Welcome to React</h1>
           </header>
-          <Link to="/">Home</Link> <Link to="/post/">Post</Link>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/post" component={Post} />
+            <Route path="/post/:id" component={Post} />
           </Switch>
         </div>
       </BrowserRouter>
