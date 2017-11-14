@@ -27,7 +27,7 @@ class Home extends React.Component {
     if (!this.state.posts.length) return null;
 
     return this.state.posts.map(post => (
-      <Link key={post.sys.id} to={`post/${post.sys.id}`}>
+      <Link key={post.sys.id} to={`post/${post.sys.id}/`}>
         {post.fields.title}
       </Link>
     ));
